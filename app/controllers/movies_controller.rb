@@ -15,10 +15,11 @@ class MoviesController < ApplicationController
 
   def create_row
     p = Movie.new
-    p.name = params[:the_name]
+    p.title = params[:the_title]
     p.image_url = params[:the_image_url]
-    p.bio = params[:the_bio]
-    p.dob = params[:the_dob]
+    p.description = params[:the_description]
+    p.year = params[:the_year]
+    p.duration = params[:the_duration]
     p.save
 
     redirect_to("http://localhost:3000/movies")
@@ -41,10 +42,11 @@ class MoviesController < ApplicationController
 
   def update_row
     @movie = Movie.find_by({ :id => params[:id]})
-    @movie.name = params[:the_new_name]
+    @movie.title = params[:the_new_title]
     @movie.image_url = params[:the_new_image_url]
-    @movie.bio = params[:the_new_bio]
-    @movie.dob = params[:the_new_dob]
+    @movie.description = params[:the_new_description]
+    @movie.year = params[:the_new_year]
+    @movie.duration = params[:the_new_duration]
     @movie.save
 
     redirect_to("http://localhost:3000/movies/#{@movie.id}")
